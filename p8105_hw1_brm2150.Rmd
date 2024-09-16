@@ -2,10 +2,10 @@
 title: "Homework Assignment 1"
 author: "Brooklynn McNeil"
 date: "2024-09-16"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
-
-## R Markdown
 
 This is an R Markdown document for the first homework assignment in p8105 class: Data Science 1.
 
@@ -47,25 +47,32 @@ ggsave(filename = "Flipper_vs_Bill_Length.png")
 ```
 ## Problem 2
 
-Create a data frame comprised of:
+Create a data frame with 4 types of variable (numerical, logical, character, and factor) with a length of 10 for each.
 
-a random sample of size 10 from a standard Normal distribution
-a logical vector indicating whether elements of the sample are greater than 0
-a character vector of length 10
-a factor vector of length 10, with 3 different factor “levels”
-
-``` {r}
-tibble(
+``` {r variable types}
+my_df = tibble(
   vec_num = rnorm(n = 10),
   vec_log = vec_num > 0,
-  vec_char = c("hi", "my", "name", "is", "brooklyn", "and", "i", "like", "yummy","pasta"),
+  vec_chr = c("hi", "my", "name", "is", "brooklynn", "and", "i", "like", "yummy","pasta"),
   vec_fac = factor(1,2,3)
 )
+my_df
+
+## We can take the mean of numerical and logical vectors
+mean(pull(my_df, var = vec_num))
+mean(pull(my_df, var = vec_log))
+
+## We cannot take the mean of character of factor vectors
+mean(pull(my_df, var = vec_chr))
+mean(pull(my_df, var = vec_fac))
 ```
+This chunk shows an attempt at convert all of the vectors in **my_df** data frame to a numerical format. This only worked for the logical variable and not for the character or factor variable. This explaines why a mean was impossible to calculate for these variables.
 
+```{r, eval=FALSE}
 
+as.numeric(my_df$vec_log)
+as.numeric(my_df$vec_chr)
+as.numeric(my_df$vec_fac)
 
-
-
-
+```
 
