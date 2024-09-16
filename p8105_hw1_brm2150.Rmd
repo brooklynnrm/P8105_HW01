@@ -23,19 +23,23 @@ The penguins data set includes the variables:  *`r variable.names(penguins)`*.
 Penguins is a data frame with `r nrow(penguins)` rows and `r ncol(penguins)` columns. 
 The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`
 
-```{r cars}
+### Plots of Penguin Dataset
+```{r plotting penguins, message = FALSE, warning = FALSE}
+#load packages
+library(ggplot2)
+library(tidyverse)
+
+# create data frame
 plot_df = tibble(
   x = penguins$flipper_length_mm,
   y = penguins$bill_length_mm
 )
+
+# create plot
+ggplot(plot_df) + 
+  geom_point(mapping = aes(x = x, y = y, color = penguins$species)) +
+  labs(title = "Flipper vs. Bill Length",
+       x = "Flipper Length (mm)",
+       y = "Bill Length (mm)",
+       color = "Species")
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
