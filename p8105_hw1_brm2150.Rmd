@@ -3,18 +3,20 @@ title: "Homework Assignment 1"
 author: "Brooklynn McNeil"
 date: "2024-09-16"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 This is an R Markdown document for the first homework assignment in p8105 class: Data Science 1.
 
 ## Problem 1
 
-```{r echo = FALSE}
-
+```{r echo= FALSE, message=FALSE, warning=FALSE}
+#load data
 data("penguins", package = "palmerpenguins")
 
+#load packages
+library(tidyverse)
 ```
 
 ### Description of the Penguins Dataset
@@ -25,14 +27,10 @@ The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`
 
 ### Plots of Penguin Dataset
 ```{r plotting penguins, message = FALSE, warning = FALSE}
-#load packages
-library(tidyverse)
-
 # create data frame
 penguin_df = tibble(
   x = penguins$flipper_length_mm,
-  y = penguins$bill_length_mm
-)
+  y = penguins$bill_length_mm)
 
 # create plot
 ggplot(penguin_df) + 
@@ -47,14 +45,14 @@ ggsave(filename = "Flipper_vs_Bill_Length.png")
 ```
 ## Problem 2
 
-Create a data frame with 4 types of variable (numerical, logical, character, and factor) with a length of 10 for each.
+Create a data frame with 4 types of variables (numerical, logical, character, and factor) with a length of 10 for each.
 
 ``` {r variable types}
 my_df = tibble(
   vec_num = rnorm(n = 10),
   vec_log = vec_num > 0,
   vec_chr = c("hi", "my", "name", "is", "brooklynn", "and", "i", "like", "yummy","pasta"),
-  vec_fac = factor(1,2,3)
+  vec_fac = factor(x = c(1,2,3,1,2,3,1,2,3,1))
 )
 my_df
 
@@ -66,7 +64,7 @@ mean(pull(my_df, var = vec_log))
 mean(pull(my_df, var = vec_chr))
 mean(pull(my_df, var = vec_fac))
 ```
-This chunk shows an attempt at convert all of the vectors in **my_df** data frame to a numerical format. This only worked for the logical variable and not for the character or factor variable. This explaines why a mean was impossible to calculate for these variables.
+This chunk shows an attempt at converting all the vectors in **my_df** data frame to a numerical format. This only works for the logical variable and not for the character or factor variables. This explains why taking a mean was impossible to calculate for these variables.
 
 ```{r, eval=FALSE}
 
