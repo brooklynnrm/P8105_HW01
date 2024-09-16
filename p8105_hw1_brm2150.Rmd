@@ -26,17 +26,16 @@ The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`
 ### Plots of Penguin Dataset
 ```{r plotting penguins, message = FALSE, warning = FALSE}
 #load packages
-library(ggplot2)
 library(tidyverse)
 
 # create data frame
-plot_df = tibble(
+penguin_df = tibble(
   x = penguins$flipper_length_mm,
   y = penguins$bill_length_mm
 )
 
 # create plot
-ggplot(plot_df) + 
+ggplot(penguin_df) + 
   geom_point(mapping = aes(x = x, y = y, color = penguins$species)) +
   labs(title = "Flipper vs. Bill Length",
        x = "Flipper Length (mm)",
@@ -46,3 +45,27 @@ ggplot(plot_df) +
 # save plot
 ggsave(filename = "Flipper_vs_Bill_Length.png")
 ```
+## Problem 2
+
+Create a data frame comprised of:
+
+a random sample of size 10 from a standard Normal distribution
+a logical vector indicating whether elements of the sample are greater than 0
+a character vector of length 10
+a factor vector of length 10, with 3 different factor “levels”
+
+``` {r}
+tibble(
+  vec_num = rnorm(n = 10),
+  vec_log = vec_num > 0,
+  vec_char = c("hi", "my", "name", "is", "brooklyn", "and", "i", "like", "yummy","pasta"),
+  vec_fac = factor(1,2,3)
+)
+```
+
+
+
+
+
+
+
