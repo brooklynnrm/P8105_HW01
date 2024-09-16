@@ -42,4 +42,7 @@ ggplot(plot_df) +
        x = "Flipper Length (mm)",
        y = "Bill Length (mm)",
        color = "Species")
+
+# save plot
+ggsave(filename = "Flipper_vs_Bill_Length.png")
 ```
