@@ -1,0 +1,41 @@
+---
+title: "Homework Assignment 1"
+author: "Brooklynn McNeil"
+date: "2024-09-16"
+output: html_document
+---
+
+## R Markdown
+
+This is an R Markdown document for the first homework assignment in p8105 class: Data Science 1.
+
+## Problem 1
+
+```{r echo = FALSE}
+
+data("penguins", package = "palmerpenguins")
+
+```
+
+### Description of the Penguins Dataset
+
+The penguins data set includes the variables:  *`r variable.names(penguins)`*. 
+Penguins is a data frame with `r nrow(penguins)` rows and `r ncol(penguins)` columns. 
+The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`
+
+```{r cars}
+plot_df = tibble(
+  x = penguins$flipper_length_mm,
+  y = penguins$bill_length_mm
+)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
