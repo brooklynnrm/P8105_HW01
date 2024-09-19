@@ -21,7 +21,8 @@ library(tidyverse)
 
 ### Description of the Penguins Dataset
 
-The penguins data set includes the variables:  *`r variable.names(penguins)`*. 
+The *penguins* data set is a subset of measurments of penguin species from the *`r unique(penguins$island)`* islands in Palmer Archipelgo.
+The *penguins* data set includes the variables:  *`r variable.names(penguins)`*. 
 Penguins is a data frame with `r nrow(penguins)` rows and `r ncol(penguins)` columns. 
 The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`
 
