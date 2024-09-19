@@ -3,8 +3,8 @@ title: "Homework Assignment 1"
 author: "Brooklynn McNeil"
 date: "2024-09-16"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 This is an R Markdown document for the first homework assignment in p8105 class: Data Science 1.
